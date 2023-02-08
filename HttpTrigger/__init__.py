@@ -16,7 +16,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     chrome_options.add_argument('--disable-dev-shm-usage')
     driver = webdriver.Chrome("/usr/local/bin/chromedriver", chrome_options=chrome_options)
     
-    driver.get('https://v-sjoshu:Whatisthestick.2.@onesupport.crm.dynamics.com/main.aspx?appid=101acb62-8d00-eb11-a813-000d3a8b3117')
+    driver.get('https://v-sjoshu:Whatisthestick.2.@onesupport.crm.dynamics.com/main.aspx?appid=101acb62-8d00-eb11-a813-000d3a8b3117/')
     
     
     links = driver.current_url
