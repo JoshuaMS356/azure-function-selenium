@@ -16,17 +16,11 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     chrome_options.add_argument('--disable-dev-shm-usage')
     driver = webdriver.Chrome("/usr/local/bin/chromedriver", chrome_options=chrome_options)
     
-    driver.get('https://onesupport.crm.dynamics.com/')
-    
-    time.sleep(2)
+    driver.get('https://www.donotcall.gov/register.html')
     links = driver.current_url
-    logging.info('Currently on step ' + links)
-    WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "Gridec366332-99c0-2902-bb47-dadef6f7e3d9_component"))).click()
-    time.sleep(1)
-    WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "msdfm_jitaccessapprovalrequest|NoRelationship|HomePageGrid|new.msdfm_jitaccessapprovalrequest.Approve.Command0id-78-button"))).click()
-    link = driver.current_url
-    logging.info('Currently on step ' + link)
+    logging.info('step 1: '+links)
+    
     return func.HttpResponse(
-             str(links + '  ' + link),
+             str(links),
              status_code=200
     )
