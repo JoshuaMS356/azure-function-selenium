@@ -16,30 +16,17 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     chrome_options.add_argument('--disable-dev-shm-usage')
     driver = webdriver.Chrome("/usr/local/bin/chromedriver", chrome_options=chrome_options)
     
-    driver.get('https://www.donotcall.gov/register.html')
+    driver.get('https://v-sjoshu:Whatisthestick.2.@onesupport.crm.dynamics.com/main.aspx?appid=101acb62-8d00-eb11-a813-000d3a8b3117')
+    
+    
     links = driver.current_url
-    logging.info('step 1: '+links)
-    
-    #STEP 1 OF REGISTRATION SUCCESSFUL
-    WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "ContentPlaceHolder1_Button1"))).click()
-   
-    #STEP 2 OF REGISTRATION SUCCESSFUL
-    WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "ContentPlaceHolder1_PhoneNumberTextBox1"))).send_keys("3013556623")
-    link = driver.current_url
-    logging.info('step 2: '+link)
-    WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "ContentPlaceHolder1_EmailAddressTextBox"))).send_keys("test@gmail.com")    
-    WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "ContentPlaceHolder1_ConfirmEmailAddressTextBox"))).send_keys("test@gmail.com")
-    time.sleep(2)
-    WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "ContentPlaceHolder1_SubmitButton1"))).click() 
-    ulink = driver.current_url
-    
-    #STEP 3 OF REGISTRATION SUCCESSFUL
-    logging.info('step 3: '+ulink)
-    WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "ContentPlaceHolder1_RegisterButton"))).click()
-    time.sleep(2)
-    plink = driver.current_url
-    logging.info(plink)
-    return func.HttpResponse(
-             str(links + '  ' + link + '  ' + ulink + '  ' + plink),
-             status_code=200
-    )
+    logging.info('Currently on step ' + links)
+    WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "Gridec366332-99c0-2902-bb47-dadef6f7e3d9_component"))).click()
+    time.sleep(1)
+    WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "msdfm_jitaccessapprovalrequest|NoRelationship|HomePageGrid|new.msdfm_jitaccessapprovalrequest.Approve.Command0id-78-button"))).click()
+    link = driver.current_url
+    logging.info('Currently on step ' + link)
+    return func.HttpResponse(
+             str(links + '  ' + link),
+             status_code=200
+    )
