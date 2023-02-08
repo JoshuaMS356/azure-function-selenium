@@ -9,7 +9,7 @@ from selenium import webdriver
 from datetime import datetime
 import os
 def main(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info('Python HTTP trigger function processed a request. 11:38')
+    logging.info('Starting selenium')
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--no-sandbox')
@@ -18,6 +18,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     
     driver.get('https://www.donotcall.gov/register.html')
     links = driver.current_url
+    logging.info(links)
     
     #STEP 1 OF REGISTRATION SUCCESSFUL
     WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "ContentPlaceHolder1_Button1"))).click()
@@ -25,6 +26,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     #STEP 2 OF REGISTRATION SUCCESSFUL
     WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "ContentPlaceHolder1_PhoneNumberTextBox1"))).send_keys("3013556623")
     link = driver.current_url
+    logging.info(link)
     WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "ContentPlaceHolder1_EmailAddressTextBox"))).click()
     WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "ContentPlaceHolder1_EmailAddressTextBox"))).send_keys("test@gmail.com")    
     WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "ContentPlaceHolder1_ConfirmEmailAddressTextBox"))).send_keys("test@gmail.com")
