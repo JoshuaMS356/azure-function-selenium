@@ -30,7 +30,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "ContentPlaceHolder1_EmailAddressTextBox"))).send_keys("test@gmail.com")    
     WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "ContentPlaceHolder1_ConfirmEmailAddressTextBox"))).send_keys("test@gmail.com")
     time.sleep(2)
-    driver.find_element_by_id("ContentPlaceHolder1_SubmitButton1").click()
+    WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "ContentPlaceHolder1_SubmitButton1"))).click() 
     ulink = driver.current_url
     
     #STEP 3 OF REGISTRATION SUCCESSFUL
