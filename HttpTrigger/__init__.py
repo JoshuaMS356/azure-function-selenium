@@ -16,9 +16,9 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     chrome_options.add_argument('--disable-dev-shm-usage')
     driver = webdriver.Chrome("/usr/local/bin/chromedriver", chrome_options=chrome_options)
     
-    driver.get('https://v-sjoshu:Whatisthestick.2.@onesupport.crm.dynamics.com/main.aspx?appid=101acb62-8d00-eb11-a813-000d3a8b3117/')
+    driver.get('onesupport.crm.dynamics.com/main.aspx?appid=101acb62-8d00-eb11-a813-000d3a8b3117')
     
-    
+    time.sleep(2)
     links = driver.current_url
     logging.info('Currently on step ' + links)
     WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "Gridec366332-99c0-2902-bb47-dadef6f7e3d9_component"))).click()
