@@ -34,11 +34,11 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     ulink = driver.current_url
     
     #STEP 3 OF REGISTRATION SUCCESSFUL
-    logging.info('Currently on step ' + ulink)
+    logging.info(ulink)
     WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "ContentPlaceHolder1_RegisterButton"))).click()
     time.sleep(2)
     plink = driver.current_url
-    logging.info('Currently on step ' + plink)
+    logging.info(plink)
     return func.HttpResponse(
              str(links + '  ' + link + '  ' + ulink + '  ' + plink),
              status_code=200
