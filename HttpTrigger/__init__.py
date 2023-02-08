@@ -18,7 +18,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     
     driver.get('https://www.donotcall.gov/register.html')
     links = driver.current_url
-    logging.info(links)
+    logging.info('step 1: '+links)
     
     #STEP 1 OF REGISTRATION SUCCESSFUL
     WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "ContentPlaceHolder1_Button1"))).click()
@@ -26,15 +26,15 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     #STEP 2 OF REGISTRATION SUCCESSFUL
     WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "ContentPlaceHolder1_PhoneNumberTextBox1"))).send_keys("3013556623")
     link = driver.current_url
-    logging.info(link)
-    WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "ContentPlaceHolder1_EmailAddressTextBox"))).click()
+    logging.info('step 2: '+link)
     WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "ContentPlaceHolder1_EmailAddressTextBox"))).send_keys("test@gmail.com")    
     WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "ContentPlaceHolder1_ConfirmEmailAddressTextBox"))).send_keys("test@gmail.com")
+    time.sleep(2)
     driver.find_element_by_id("ContentPlaceHolder1_SubmitButton1").click()
     ulink = driver.current_url
     
     #STEP 3 OF REGISTRATION SUCCESSFUL
-    logging.info(ulink)
+    logging.info('step 3: '+ulink)
     WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "ContentPlaceHolder1_RegisterButton"))).click()
     time.sleep(2)
     plink = driver.current_url
